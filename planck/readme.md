@@ -10,3 +10,7 @@ This contains my `qmk_firmware`-compatible Planck keymap.
 * From `qmk_firmware/keyboard/planck` (same as last terminal command directory), run `make dfu` as root (`sudo make dfu`)
 
 That should be it! Your Planck keyboard should now be flashed with this layout.
+
+## Modifying
+Just modify `lytedev.c` and repeat the steps above for flashing! Easy.
+
