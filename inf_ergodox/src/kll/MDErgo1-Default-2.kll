@@ -18,6 +18,7 @@ U"S" : U"F2";
 U"A" : U"F1";
 U"LALT" : CONS"SCANPREVIOUSTRACK";
 U"LCTRL" : CONS"STOP";
+U"END" : flashMode();
 U"Y" : U"6";
 U"U" : U"7";
 U"I" : U"8";
@@ -31,4 +32,5 @@ U"QUOTE" : '|';
 U"RALT" : CONS"SCANNEXTTRACK";
 U"RCTRL" : CONS"FILEBROWSER";
 U"M" : U"INSERT";
+U"PAGEDOWN" : flashMode();
 

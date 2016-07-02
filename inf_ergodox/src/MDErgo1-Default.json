@@ -550,6 +550,10 @@
                 "0": {
                     "key": "NUMLOCK",
                     "label": "NMLK"
+                },
+                "2": {
+                    "key": "#:flashMode()",
+                    "label": "FLASH"
                 }
             }
         },
@@ -591,8 +595,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "FUN1",
-                    "label": "\u01921"
+                    "key": "FUN2",
+                    "label": "\u01922"
                 }
             }
         },
@@ -630,8 +634,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "#:flashMode()",
-                    "label": "FLASH"
+                    "key": "LCTRL",
+                    "label": "LCTRL"
                 }
             }
         },
@@ -1184,6 +1188,10 @@
                 "0": {
                     "key": "PRINTSCREEN",
                     "label": "PRSC"
+                },
+                "2": {
+                    "key": "#:flashMode()",
+                    "label": "FLASH"
                 }
             }
         },
@@ -1221,8 +1229,8 @@
             "h": 4,
             "layers": {
                 "0": {
-                    "key": "FUN2",
-                    "label": "\u01922"
+                    "key": "FUN1",
+                    "label": "\u01921"
                 }
             }
         },
