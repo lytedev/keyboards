@@ -5,7 +5,7 @@ endif
 MY_KEYMAP_DIR = "${QMK_DIR}/keyboards/planck/keymaps/lytedev"
 
 all:
-	@rm -r "${MY_KEYMAP_DIR}"
+	@rm -rf "${MY_KEYMAP_DIR}"
 	@mkdir -p "${MY_KEYMAP_DIR}"
 	@cp keymap.mk "${MY_KEYMAP_DIR}/Makefile"
 	@cp keymap.c "${MY_KEYMAP_DIR}/keymap.c"
