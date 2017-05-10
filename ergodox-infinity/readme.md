@@ -25,7 +25,7 @@ This contains my `qmk_firmware`-compatible Infinity Ergodox keymap.
 
 **Note**: You may need to run the `make dfu-left` and `make dfu-right` commands
 as root. In this case, use `sudo -E make dfu-{left,right}` so that you preserve
-the `QMK_DIR` environment variable.
+the `QMK_DIR` environment variable you set previously.
 
 **Tip**: If you don't have an extra keyboard to send the `make dfu` command,
 just prepend `sleep 10 &&` to it to give yourself 10 seconds to hit the flash
