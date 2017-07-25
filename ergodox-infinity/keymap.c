@@ -68,9 +68,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Layer 1: Symbols1
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   ~    |   !  |   @  |   #  |   $  |   %  |  F11 |           | F12  |   ^  |   &  |   *  |   (  |   )  |  Back  |
+     * |   ~    |   !  |   @  |   #  |   $  |   %  |  F11 |           | F12  |   ^  |   &  |   *  |   (  |   )  |  Del   |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |   `    |   1  |   2  |   3  |   4  |   5  |   {  |           |  }   |   6  |   7  |   8  |   9  |   0  |  Back  |
+     * |   `    |   1  |   2  |   3  |   4  |   5  |   {  |           |  }   |   6  |   7  |   8  |   9  |   0  |  Del   |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * | Escape |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|  F6  |   -  |   =  |   [  |  ]   |    \   |
      * |--------+------+------+------+------+------|   <  |           |  >   |------+------+------+------+------+--------|
@@ -101,8 +101,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            KC_SPC,  KC_BSPC, RESET,
 
         // Right Hand
-        KC_F12,  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
-        KC_RBRC, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+        KC_F12,  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
+        KC_RBRC, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
         /* ^^ */ KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
         KC_RABK, KC_F12,  KC_INS,  KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
                           KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|   <  |           |  >   |------+------+------+------+------+--------|
      * | LShift |  F7  |  F8  |  F9  | F10  | F11  |      |           |      |  F12 |  Ins |   <  |   >  |  /   | Enter  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | Ctrl |  Alt | Meta |  ()  |                                       |  ()  | Left | Down |  Up  | Right  |
+     *   | Ctrl | Ctrl |  Alt | Meta |  ()  |                                       |  ()  | Left | PgDn | PgUp | Right  |
      *   `----------------------------------'                                       `------------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | Vol- | Menu |       | Ins  | Vol+ |
@@ -149,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_SPC,  KC_BSPC, RESET,
 
         // Right Hand
-        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_BSPC,
-        KC_RCBR, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,
+        KC_RCBR, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
         /* ^^ */ KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
         KC_RABK, KC_F12,  KC_INS,  KC_LABK, KC_RABK, KC_QUES, KC_ENT,
-        KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+        KC_TRNS, KC_LEFT, KC_PGDN, KC_PGUP,   KC_RGHT,
 
         // Thumb Cluster
         KC_INS,  KC_VOLU,

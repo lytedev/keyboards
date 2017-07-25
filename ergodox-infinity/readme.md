@@ -31,7 +31,7 @@ the `QMK_DIR` environment variable you set previously.
 just prepend `sleep 10 &&` to it to give yourself 10 seconds to hit the flash
 button.
 
-That should be it! Your Planck keyboard should now be flashed with this layout.
+That should be it! Your Ergodox keyboard should now be flashed with this layout.
 
 
 ## Modifying
