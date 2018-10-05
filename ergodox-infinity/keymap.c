@@ -1,4 +1,4 @@
-#include "ergodox.h"
+#include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
 #include "version.h"
@@ -7,6 +7,8 @@
 #define SYM1 1 // symbols 1
 #define SYM2 2 // symbols 2
 #define MOUS 3 // mouse
+
+#define ESC_CTL LCTL_T(KC_ESC)
 
 enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -24,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |  Tab   |   Q  |   W  |   E  |   R  |   T  |   [  |           |  ]   |   Y  |   U  |   I  |   O  |   P  |  Back  |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | Escape |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   |    '   |
+     * |Esc/Ctl |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   |    '   |
      * |--------+------+------+------+------+------|   (  |           |  )   |------+------+------+------+------+--------|
      * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | Enter  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -43,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // Left Hand
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, KC_F11,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T, KC_LBRC,
-        KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G, /* ^^ */
+        ESC_CTL,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G, /* ^^ */
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_LPRN,
         KC_LCTL, KC_LCTL, KC_LALT, KC_LGUI, MO(SYM2),
 
@@ -72,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |   `    |   1  |   2  |   3  |   4  |   5  |   {  |           |  }   |   6  |   7  |   8  |   9  |   0  |  Del   |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | Escape |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|  F6  |   -  |   =  |   [  |  ]   |    \   |
+     * |Esc/Ctl |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|  F6  |   -  |   =  |   [  |  ]   |    \   |
      * |--------+------+------+------+------+------|   <  |           |  >   |------+------+------+------+------+--------|
      * | LShift |  F7  |  F8  |  F9  | F10  | F11  |      |           |      |  F12 |  Ins |   ,  |   .  |  /   | Enter  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -91,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // Left Hand
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_F11,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LCBR,
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   /* ^^ */
+        ESC_CTL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   /* ^^ */
         KC_LSFT, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_LABK,
         KC_LCTL, KC_LCTL, KC_LALT, KC_LGUI, KC_TRNS,
 
@@ -120,11 +122,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |   ~    |   !  |   @  |   #  |   $  |   %  |   {  |           |  }   |   ^  |   &  |   *  |   (  |   )  |  Back  |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | Escape |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|  F6  |   _  |   +  |   {  |  }   |    |   |
+     * |Esc/Ctl |  F1  |  F2  |  F3  |  F4  |  F5  |------|           |------|  F6  |   _  |   +  |   {  |  }   |    |   |
      * |--------+------+------+------+------+------|   <  |           |  >   |------+------+------+------+------+--------|
      * | LShift |  F7  |  F8  |  F9  | F10  | F11  |      |           |      |  F12 |  Ins |   <  |   >  |  /   | Enter  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   | Ctrl | Ctrl |  Alt | Meta |  ()  |                                       |  ()  | Left | PgDn | PgUp | Right  |
+     *   | Ctrl | Ctrl |  Alt | Meta |  ()  |                                       |  ()  | Home | PgDn | PgUp |  End   |
      *   `----------------------------------'                                       `------------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | Vol- | Menu |       | Ins  | Vol+ |
@@ -139,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // Left Hand
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_LCBR,
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   /* ^^ */
+        ESC_CTL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   /* ^^ */
         KC_LSFT, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_LABK,
         KC_LCTL, KC_LCTL, KC_LALT, KC_LGUI, KC_TRNS,
 
@@ -153,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_RCBR, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
         /* ^^ */ KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
         KC_RABK, KC_F12,  KC_INS,  KC_LABK, KC_RABK, KC_QUES, KC_ENT,
-        KC_TRNS, KC_LEFT, KC_PGDN, KC_PGUP,   KC_RGHT,
+        KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
 
         // Thumb Cluster
         KC_INS,  KC_VOLU,

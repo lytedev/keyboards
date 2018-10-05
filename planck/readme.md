@@ -7,11 +7,12 @@ This contains my `qmk_firmware`-compatible Planck keymap.
 ===============
 
 * Docker
+* See the `qmk_firmware` repo for details.
 
 ## Flashing
 ===========
 
-`make dfu`
+Just run `make`.
 
 Don't forget to press the flash button on your keyboard!
 

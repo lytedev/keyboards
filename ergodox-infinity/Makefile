@@ -1,37 +1,33 @@
-# Check that given variables are set and all have non-empty values,
-# die with an error otherwise.
-#
-# Params:
-#   1. Variable name(s) to test.
-#   2. (optional) Error message to print.
-check_defined = \
-    $(strip $(foreach 1,$1, \
-        $(call __check_defined,$1,$(strip $(value 2)))))
-__check_defined = \
-    $(if $(value $1),, \
-      $(error Undefined $1$(if $2, ($2))))
+QMK_REPO_DIR ?= ${HOME}/.local/share/qmk_firmware
+KB_DIR ?= ${QMK_REPO_DIR}/keyboards/ergodox_infinity/keymaps/lytedev
 
-$(call check_defined, QMK_DIR)
+default: flash-left-then-right
 
-KEYMAP_NAME = "lytedev"
-ERGODOX_DIR = "${QMK_DIR}/keyboards/ergodox"
-MY_KEYMAP_DIR = "${ERGODOX_DIR}/keymaps/${KEYMAP_NAME}"
-MAKE_DIR = "${ERGODOX_DIR}"
+${QMK_REPO_DIR}:
+	@git clone https://github.com/lytedev/qmk_firmware.git "${QMK_REPO_DIR}"
+	@cd "${QMK_REPO_DIR}" && make git-submodule
 
-left: prep
-	@make -C "${MAKE_DIR}" infinity-"${KEYMAP_NAME}"
+repo_keymap_files:
+	@rm -rf "${KB_DIR}"
+	@mkdir -p "${KB_DIR}"
+	@cp keymap.c "${KB_DIR}/"
 
-right: prep
-	@make -C "${MAKE_DIR}" infinity-"${KEYMAP_NAME}" MASTER=right
+flash-left: ${QMK_REPO_DIR} repo_keymap_files
+	@cd "${QMK_REPO_DIR}" && sudo make ergodox_infinity:lytedev:dfu-util
 
-dfu-left:
-	@make -C "${MAKE_DIR}" infinity-"${KEYMAP_NAME}"-dfu-util
+flash-right: ${QMK_REPO_DIR} repo_keymap_files
+	@cd "${QMK_REPO_DIR}" && sudo make ergodox_infinity:lytedev:dfu-util MASTER=right
 
-dfu-right:
-	@make -C "${MAKE_DIR}" infinity-"${KEYMAP_NAME}"-dfu-util MASTER=right
+build-and-flash-left: ${QMK_REPO_DIR} repo_keymap_files
+	@cd "${QMK_REPO_DIR}" && sudo make ergodox_infinity:lytedev
 
-prep:
-	@rm -rf "${MY_KEYMAP_DIR}"
-	@mkdir -p "${MY_KEYMAP_DIR}"
-	@cp keymap.c "${MY_KEYMAP_DIR}/keymap.c"
+build-and-flash-right: ${QMK_REPO_DIR} repo_keymap_files
+	@cd "${QMK_REPO_DIR}" && sudo make ergodox_infinity:lytedev MASTER=right
 
+flash-left-then-right: flash-left flash-right
+
+build-left: ${QMK_REPO_DIR} repo_keymap_files
+	@docker run -e keymap=lytedev -e keyboard=ergodox_infinity --rm -v "${QMK_REPO_DIR}":/qmk:rw edasque/qmk_firmware
+
+build-right: ${QMK_REPO_DIR} repo_keymap_files
+	@docker run -e keymap=lytedev -e MASTER=right -e keyboard=ergodox_infinity --rm -v "${QMK_REPO_DIR}":/qmk:rw edasque/qmk_firmware
