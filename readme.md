@@ -1,5 +1,3 @@
 # keyboards
 
-My personal keyboard configuration files.
-
-See each subdirectory for different keyboard models.
+This repository has moved to https://git.lyte.dev/lytedev/keyboards
